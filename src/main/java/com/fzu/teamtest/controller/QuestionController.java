@@ -17,14 +17,16 @@ public class QuestionController {
     @Resource
     private QuestionDao questionDao;
 
-    @RequestMapping("/add")
+    @RequestMapping("/question")
     public @ResponseBody AjaxResponse addQuestion(@RequestBody Question question){
         questionDao.insert(question);
         return AjaxResponse.success(question);
     }
 
-    @RequestMapping("/get/{id}")
+    @RequestMapping("/questions/{id}")
     public @ResponseBody AjaxResponse getQuestion(@PathVariable int id){
         return AjaxResponse.success(questionDao.selectByPrimaryKey(id));
     }
+
+    
 }
